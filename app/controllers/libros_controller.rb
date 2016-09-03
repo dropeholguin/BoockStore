@@ -4,11 +4,12 @@ class LibrosController < ApplicationController
   # GET /libros
   # GET /libros.json
   def index
+
     @libros = Libro.all
-    if params[:search]
-      @posts = Libro.search(params[:search]).order("created_at DESC")
+    if !params.empty?
+      @libros_busqueda = Libro.search(params).order("created_at DESC")
     else
-      @posts = Libro.all.order('created_at DESC')
+      @libros_busqueda = Libro.all.order('created_at DESC')
     end
   end
 

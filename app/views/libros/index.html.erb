@@ -15,6 +15,7 @@
   </thead>
 
   <tbody>
+
     <% @libros.each do |libro| %>
       <tr>
         <td><%= libro.titulo %></td>
@@ -32,18 +33,63 @@
 
 <br>
 
+<%= form_tag(libros_path, :method => "get", id: "search-form") do %>
+
+  <%= label_tag "Titulo" %><br>
+  <%= text_field_tag :search_titulo, params[:search_titulo], placeholder: "Buscar " %><br>
+  
+  <%= label_tag "Autor" %><br>
+  <%= text_field_tag :search_autor, params[:search_autor], placeholder: "Buscar " %><br>
+
+  <%= label_tag "ISBN" %><br>
+  <%= text_field_tag :search_isbn, params[:search_isbn], placeholder: "Buscar " %>
+
+  <%= submit_tag "Buscar" %>
+<% end %>
+
+<% if @libros_busqueda.present? %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Autor</th>
+      <th>Isbn</th>
+      <th>Reseña</th>
+      <th>Calificacion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @libros_busqueda.each do |libro| %>
+      <tr>
+        <td><%= libro.titulo %></td>
+        <td><%= libro.autor %></td>
+        <td><%= libro.ISBN %></td>
+        <td><%= libro.reseña %></td>
+        <td><%= libro.calificacion %></td>
+        <td><%= link_to 'Show', libro %></td>
+        <td><%= link_to 'Edit', edit_libro_path(libro) %></td>
+        <td><%= link_to 'Destroy', libro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% else %>
+  <p>No se encontraron libros con estos criterios de busqueda: 
+  <%= params[:search_titulo] %>.
+  </p>
+<% end %>
+
 <%= link_to 'Nuevo Libro', new_libro_path %>
 
 
-<%= form_tag(libros_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Buscar " %>
-<%= submit_tag "Buscar" %>
-<% end %>
 
-<% if @libros.present? %>
- <p>Se encontro el libro: <%= @libros %></p>
-<% else %>
-  <p>No se encontraron libros con estos criterios de busqueda: 
-  <%= params[:search] %>.
-  </p>
-<% end %>
+
+

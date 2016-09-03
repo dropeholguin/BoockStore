@@ -1,8 +1,7 @@
 class Libro < ActiveRecord::Base
 
-	def self.search(search)
-	  where("titulo LIKE ?", "%#{search}%") 
-	  where("autor LIKE ?", "%#{search}%")
-	  where("ISBN LIKE ?", "%#{search}%")
+	def self.search(params)
+	  where("titulo LIKE ?  or autor LIKE ? or ISBN LIKE ?", 
+	  	      params[:search_titulo] , params[:search_autor] , params[:search_isbn]) 
 	end
 end
