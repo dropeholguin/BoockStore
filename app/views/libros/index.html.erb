@@ -32,4 +32,18 @@
 
 <br>
 
-<%= link_to 'New Libro', new_libro_path %>
+<%= link_to 'Nuevo Libro', new_libro_path %>
+
+
+<%= form_tag(libros_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Buscar " %>
+<%= submit_tag "Buscar" %>
+<% end %>
+
+<% if @libros.present? %>
+ <p>Se encontro el libro: <%= @libros %></p>
+<% else %>
+  <p>No se encontraron libros con estos criterios de busqueda: 
+  <%= params[:search] %>.
+  </p>
+<% end %>
