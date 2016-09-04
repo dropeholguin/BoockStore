@@ -5,3 +5,4 @@ class Libro < ActiveRecord::Base
 	  	      params[:search_titulo] , params[:search_autor] , params[:search_isbn]) 
 	end
 end
+

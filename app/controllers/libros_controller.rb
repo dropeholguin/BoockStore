@@ -7,9 +7,9 @@ class LibrosController < ApplicationController
 
     @libros = Libro.all
     if !params.empty?
-      @libros_busqueda = Libro.search(params).order("created_at DESC")
+      @libros_busqueda = Libro.search(params)
     else
-      @libros_busqueda = Libro.all.order('created_at DESC')
+      @libros_busqueda = Libro.all
     end
   end
 
