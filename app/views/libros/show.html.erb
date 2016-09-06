@@ -13,14 +13,17 @@
   <% end %>
   <h1>Show libro</h1>
 </div>
-
-<dl class="dl-horizontal">
-  <dt>Titulo:</dt>
-  <dd><%= @libro.titulo %></dd>
-
-  <dt>Autor:</dt>
-  <dd><%= @libro.autor %></dd>
-
-  <dt>ISBN:</dt>
-  <dd><%= @libro.ISBN %></dd>
-</dl>
+<div class="jumbotron">
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="thumbnail">
+          <img src="http://www.boolino.es/newmedia/portadas/2016/03/17/IJ00420101.jpg" >
+          <div class="caption">
+            <h3><%= @libro.titulo %></h3>
+            <strong>Autor:</strong> <p><%= @libro.autor %></p>
+            <strong>ISBN:</strong><p><%= @libro.ISBN %></p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
