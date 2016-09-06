@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to libros_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_libro_path(@libro), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <%= link_to new_libro_review_path(@libro), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Create review
+  <% end %>
+  <h1>Show libro</h1>
+</div>
+<div class="jumbotron">
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="thumbnail">
+          <img src="http://www.boolino.es/newmedia/portadas/2016/03/17/IJ00420101.jpg" >
+          <div class="caption">
+            <h3><%= @libro.titulo %></h3>
+            <strong>Autor:</strong> <p><%= @libro.autor %></p>
+            <strong>ISBN:</strong><p><%= @libro.ISBN %></p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
