@@ -1,10 +1,9 @@
 class LibrosController < ApplicationController
   before_action :set_libro, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
   # GET /libros
   # GET /libros.json
   def index
-
     @libros = Libro.all
     if !params.empty?
       @libros_busqueda = Libro.search(params)

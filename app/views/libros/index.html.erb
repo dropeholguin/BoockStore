@@ -1,9 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Libros</h1>
-
-
-
 <%= form_tag(libros_path, :method => "get", id: "search-form") do %>
 
   <%= label_tag "Titulo" %><br>
@@ -17,78 +11,72 @@
 
   <%= submit_tag "Buscar" %>
 <% end %>
-
-
-
 <% if @libros_busqueda.present? %>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Autor</th>
-      <th>Isbn</th>
-      <th>Reseña</th>
-      <th>Calificacion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-    <% @libros_busqueda.each do |libro| %>
-      <tr>
-        <td><%= libro.titulo %></td>
-        <td><%= libro.autor %></td>
-        <td><%= libro.ISBN %></td>
-        <td><%= libro.reseña %></td>
-        <td><%= libro.calificacion %></td>
-        <td><%= link_to 'Show', libro %></td>
-        <td><%= link_to 'Edit', edit_libro_path(libro) %></td>
-        <td><%= link_to 'Destroy', libro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <div class="page-header">
+    <%= link_to new_libro_path, class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      New Libro
     <% end %>
-  </tbody>
-</table>
+    <h1>Listing libros</h1>
+  </div>
 
-<br>
-<% else %> 
-
-      <p>
-        No se encontraron libros con estos criterios de busqueda
-      </p>
-  
-   <% if :search_titulo=="" and :search_autor=="" and :search_isbn=="" %>
-    <table>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
       <thead>
         <tr>
-          <th>Titulo</th>
-          <th>Autor</th>
-          <th>Isbn</th>
-          <th>Reseña</th>
-          <th>Calificacion</th>
-          <th colspan="3"></th>
+              <th>Title</th>
+              <th>author</th>
+              <th>ISBN</th>
+              <th></th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
 
       <tbody>
-
-        <% @libros.each do |libro| %>
-          <tr>
-            <td><%= libro.titulo %></td>
-            <td><%= libro.autor %></td>
-            <td><%= libro.ISBN %></td>
-            <td><%= libro.reseña %></td>
-            <td><%= libro.calificacion %></td>
-            <td><%= link_to 'Show', libro %></td>
-            <td><%= link_to 'Edit', edit_libro_path(libro) %></td>
-            <td><%= link_to 'Destroy', libro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
+        <%= content_tag_for(:tr, @libros_busqueda) do |libro| %>
+              <td><%= libro.titulo %></td>
+              <td><%= libro.autor %></td>
+              <td><%= libro.ISBN %></td>
+              <td><%= link_to 'Show', libro %></td>
+          <td><%= link_to 'Edit', edit_libro_path(libro) %></td>
+          <td><%= link_to 'Destroy', libro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tbody>
-    </table><br>
+    </table>
+  </div>
+<% else %>
+  <div class="page-header">
+    <%= link_to new_libro_path, class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      New Libro
     <% end %>
-<% end %>
+    <h1>Listing libros</h1>
+  </div>
 
-<%= link_to 'Nuevo Libro', new_libro_path %>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+              <th>Title</th>
+              <th>author</th>
+              <th>ISBN</th>
+              <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= content_tag_for(:tr, @libros) do |libro| %>
+              <td><%= libro.titulo %></td>
+              <td><%= libro.autor %></td>
+              <td><%= libro.ISBN %></td>
+              <td><%= link_to 'Show', libro %></td>
+          <td><%= link_to 'Edit', edit_libro_path(libro) %></td>
+          <td><%= link_to 'Destroy', libro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

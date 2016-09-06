@@ -29,10 +29,8 @@ ActiveRecord::Schema.define(version: 20160906020224) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.integer  "libro_id"
   end
 
-  add_index "reviews", ["libro_id"], name: "index_reviews_on_libro_id"
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "scores", force: :cascade do |t|
@@ -54,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160906020224) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "name"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
