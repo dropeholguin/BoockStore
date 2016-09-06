@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @libro.titulo %>
+</p>
+
+<p>
+  <strong>Autor:</strong>
+  <%= @libro.autor %>
+</p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @libro.ISBN %>
+</p>
+
+<p>
+  <strong>Reseña:</strong>
+  <%= @libro.reviews.last.titulo %>
+</p>
+
+
+<%= link_to 'Crear reseña', new_libro_review_path(@libro) %> |
+<%= link_to 'Edit', edit_libro_path(@libro) %> |
+<%= link_to 'Back', libros_path %>
