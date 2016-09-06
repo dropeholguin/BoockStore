@@ -1,4 +1,4 @@
-class Review < ActiveRecord::Base
+class Score < ActiveRecord::Base
 	belongs_to :libro
 	belongs_to :user
 end

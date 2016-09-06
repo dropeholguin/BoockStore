@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_libro
 
   # GET /reviews
   # GET /reviews.json
@@ -25,10 +26,12 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = current_user.reviews.new(review_params)
+    @review.libro = @libro
+
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        format.html { redirect_to @libro, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
@@ -62,6 +65,11 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+     def set_libro
+      @libro = Libro.find(params[:libro_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])

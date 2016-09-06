@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :review
+  has_many :reviews
+  has_many :scores
 end

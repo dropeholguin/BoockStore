@@ -17,13 +17,10 @@
 
 <p>
   <strong>Reseña:</strong>
-  <%= @libro.reseña %>
+  <%= @libro.reviews.last.titulo %>
 </p>
 
-<p>
-  <strong>Calificacion:</strong>
-  <%= @libro.calificacion %>
-</p>
 
+<%= link_to 'Crear reseña', new_libro_review_path(@libro) %> |
 <%= link_to 'Edit', edit_libro_path(@libro) %> |
 <%= link_to 'Back', libros_path %>
