@@ -2,7 +2,7 @@ class Libro < ActiveRecord::Base
 
 	has_many :reviews
 	has_many :scores
-	has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+	has_attached_file :image, styles: { medium: "800x800#", thumb: "100x100#" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   
 	def self.search(params)
