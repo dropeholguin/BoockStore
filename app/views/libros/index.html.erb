@@ -29,7 +29,7 @@
       <%= content_tag_for(:tr, @libros_busqueda) do |libro| %>
         <div class="col-lg-4">
           <div class="thumbnail">
-            <img src="http://www.boolino.es/newmedia/portadas/2016/03/17/IJ00420101.jpg" >
+            <%= image_tag libro.image.url(:medium) %>
             <div class="caption">
               <h3><%= libro.titulo %></h3>
               <strong>Autor:</strong> <p><%= libro.autor %></p>
@@ -54,7 +54,7 @@
       <%= content_tag_for(:tr, @libros) do |libro| %>
         <div class="col-lg-4">
           <div class="thumbnail">
-            <img src="http://www.boolino.es/newmedia/portadas/2016/03/17/IJ00420101.jpg" >
+            <%= image_tag libro.image.url(:medium) %>
             <div class="caption">
               <h3><%= libro.titulo %></h3>
               <strong>Autor:</strong> <p><%= libro.autor %></p>
